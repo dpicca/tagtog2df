@@ -1,56 +1,36 @@
 # tagtog2df
- 
-JSON Parser
-A python module for parsing .json files into dataframes.
+This repository provides three main functionalities to convert tagtag JSON files into a pandas dataframe format. The functionalities are:
 
-General Functionalities
-Parsing .json files into entities and relations dataframes
-Merging entities and relations dataframes for multiple .json files into one dataframe
-Option to get one dataframe for each .json file or a list of dataframes for multiple .json files
-Option to get one dataframe for one .json file or a concatenated dataframe for multiple .json files
-How to use
-Clone the repository to your local machine
+* `allfiles_onedataframe`: converts all JSON files in a given directory into one big dataframe.
+* `allfiles_listdataframe`: converts all JSON files in a given directory into a list of separate dataframes.
+* `onefile_onedataframe`: converts a single JSON file into one dataframe.
 
-Import the module into your project with the following code:
+# Example Usage
+Consider a directory data that contains three JSON files: file1.json, file2.json, and file3.json.
 
-python
-Copy code
-from pathlib import Path
-import json
-import pandas as pd
+```
 import logging
-logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
-Use the following functions to parse the .json files:
-For parsing one .json file into one dataframe:
-scss
-Copy code
-onefile_onedataframe(pathfile)
-For parsing multiple .json files into one dataframe:
-```
-allfiles_onedataframe(path)
-```
-For parsing multiple .json files into a list of dataframes:
-scss
-Copy code
-allfiles_listdataframe(path)
-Example
-Parsing one .json file into one dataframe
-scss
-Copy code
-data = onefile_onedataframe('path/to/json/file')
-print(data)
-Parsing multiple .json files into one dataframe
-scss
-Copy code
-data = allfiles_onedataframe('path/to/json/folder')
-print(data)
-Parsing multiple .json files into a list of dataframes
-scss
-Copy code
-data = allfiles_listdataframe('path/to/json/folder')
-print(data)
-Note: Replace 'path/to/json/file' or 'path/to/json/folder' with the actual path to the .json file or folder.
+import pandas as pd
+from pathlib import Path
+from json_to_dataframe import allfiles_onedataframe, allfiles_listdataframe, onefile_onedataframe
 
+# Example 1: convert all JSON files in a directory into one big dataframe
+path = Path('data')
+df = allfiles_onedataframe(path)
+print(df)
+
+# Example 2: convert all JSON files in a directory into a list of separate dataframes
+df_list = allfiles_listdataframe(path)
+for df in df_list:
+    print(df)
+
+# Example 3: convert a single JSON file into one dataframe
+file = Path('data/file1.json')
+df = onefile_onedataframe(file)
+print(df)
+```
+# Note
+It is recommended to set the logging level to logging.INFO to see the log messages during execution.
 
 
 
