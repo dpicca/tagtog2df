@@ -12,7 +12,7 @@ Consider a directory data that contains three JSON files: file1.json, file2.json
 import logging
 import pandas as pd
 from pathlib import Path
-from json_to_dataframe import allfiles_onedataframe, allfiles_listdataframe, onefile_onedataframe
+from tagtog2df.tagtog2df import allfiles_onedataframe, allfiles_listdataframe, onefile_onedataframe
 
 # Example 1: convert all JSON files in a directory into one big dataframe
 path = Path('data')
